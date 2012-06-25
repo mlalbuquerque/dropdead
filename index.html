@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Drop Dead</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+            a {
+                border: 1px solid black;
+                float: left;
+                margin-right: 50px;
+            }
+            
+            #meu-menu {
+                border: 2px solid black;
+                float: left;
+                margin-right: 50px;
+                text-align: center;
+                width: 100px;
+            }
+            
+            input {
+                border: 2px solid black;
+                border-radius: 5px;
+                width: 300px;
+            }
+            
+            .submenu {
+                border: 2px solid black;
+            }
+            
+            .submenu-item-hover {
+                background-color: black;
+                color: white;
+            }
+        </style>
+        <script src="/jquery-1.7.2.min.js"></script>
+        <script src="jquery.dropdead.js"></script>
+        <script>
+            $(function () {
+                $('#menu').dropDead();
+                
+                $('#meu-menu').dropDead({
+                    menuElement: 'div'
+                });
+                
+                $('#nome').dropDead({
+                    menuElement: 'p',
+                    callback: function (el) {
+                        $('#nome').val(el.text());
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <a id="menu" href="#">
+            Menu
+            <ul>
+                <li title="http://google.com">Google</li>
+                <li title="http://youtube.com">Youtube</li>
+                <li title="http://facebook.com">Facebook</li>
+            </ul>
+        </a>
+        <div id="meu-menu">
+            Meu Menu
+            <div>
+                <div title="http://google.com">GOOGLE</div>
+                <div title="https://youtube.com">YOUTUBE</div>
+                <div title="https://facebook.com">FACEBOOK</div>
+            </div>
+        </div>
+        Nome:
+        <input type="text" id="nome" />
+        <p>
+            <span>Fulano</span>
+            <span>Sicrano</span>
+            <span>Beltrano</span>
+        </p>
+    </body>
+</html>
